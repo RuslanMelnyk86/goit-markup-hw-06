@@ -590,6 +590,7 @@ body {
 }
 
 .footer-email {
+  position: relative;
   display: flex;
 }
 
@@ -932,18 +933,29 @@ button {
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   color: var(--primary-text-color);
 }
+
+.input-field:not(:placeholder-shown) + .input-label {
+  transform: translate(-25px, -60px);
+}
+
 .modal-input:focus-within > .modal-icon,
 .modal-input:hover > .modal-icon {
   fill: var(--accent-color);
 }
 
 .modal-input:focus-within > .input-label,
-.modal-input:hover > .input-label {
+.modal-input:hover > .input-label,
+.modal-input:not(:placeholder-shown) + .input-label {
   transform: translate(-25px, -60px);
   color: var(--accent-color);
 }
-.modal-input:focus-within > .input-field {
-  outline: none;
+
+.modal-input:focus-within .input-field,
+.modal-input:hover > .input-field {
+  border-color: var(--accent-color);
+  outline-color: var(--accent-color);
+  cursor: pointer;
+  /*outline: none;*/
 }
 
 .input-label {
@@ -961,6 +973,7 @@ button {
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
     color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .modal-icon {
   position: absolute;
   display: inline-block;
@@ -983,13 +996,14 @@ textarea {
   border: 1px solid rgba(33, 33, 33, 0.2);
   box-sizing: border-box;
   border-radius: 4px;
-  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .input-field-textarea:focus-within,
+.input-field-textarea:hover,
 .input-field-textarea:not(:placeholder-shown) {
   border-color: var(--accent-color);
   outline: none;
+  cursor: pointer;
 }
 .modal-button {
   display: flex;
